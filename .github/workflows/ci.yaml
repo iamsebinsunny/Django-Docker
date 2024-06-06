@@ -23,5 +23,5 @@ jobs:
               run: |
                 echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
                 cd myproject
-                docker build -t docker.pkg.github.com/${{ github.repository }}:latest .
-                docker push docker.pkg.github.com/${{ github.repository }}:latest
+                docker build -t docker.pkg.github.com/${{ github.repository }}/django-docker:latest .
+                docker push docker.pkg.github.com/${{ github.repository }}/django-docker:latest
