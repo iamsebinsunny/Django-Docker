@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: django
-        image: iamsebinsunny/django-docker:latest
+        image: sebinsunny/django-docker:latest
         resources:
           requests:
             memory: "32Mi"
