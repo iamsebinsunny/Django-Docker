@@ -19,5 +19,5 @@ jobs:
               run: |
                 echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
                 TIMESTAMP=$(date +%Y%m%d%H%M)
-                docker build -t docker.pkg.github.com/${{ github.repository }}/${{ github.repository }}/django-docker:$TIMESTAMP .
+                docker build -t docker.pkg.github.com/${{ github.repository }}/${{ github.repository }}/django-docker:$TIMESTAMP myproject/Dockerfile
                 docker push docker.pkg.github.com/${{ github.repository }}/${{ github.repository }}/django-docker:$TIMESTAMP
