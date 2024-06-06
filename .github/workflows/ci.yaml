@@ -1,0 +1,23 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+
+            - name: Build and push Docker image
+              run: |
+                echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u ${{ github.repository_owner }} --password-stdin
+                TIMESTAMP=$(date +%Y%m%d%H%M)
+                docker build -t docker.pkg.github.com/${{ github.repository }}/${{ github.repository }}/django-docker:$TIMESTAMP .
+                docker push docker.pkg.github.com/${{ github.repository }}/${{ github.repository }}/django-docker:$TIMESTAMP
